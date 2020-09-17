@@ -19,15 +19,19 @@ public class Calculations {
 
     public static void main(String[] args) {
         Calculations test = new Calculations(7, 4, 0, null);
+        System.out.println("First Question:");
         test.firstMethod();
 
         Calculations test1 = new Calculations(2, 8, 4, -4.0);
+        System.out.println("Second Question:");
         test1.secondMethod();
 
         Calculations test2 = new Calculations(4, 9, 56, 4.0);
+        System.out.println("Third Question:");
         test2.thirdMethod();
 
         Calculations test3 = new Calculations(9, 2, 3, 5.0);
+        System.out.println("Fourth Question:");
         test3.fourthMethod();
     }
 
