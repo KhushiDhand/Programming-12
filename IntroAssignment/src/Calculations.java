@@ -18,57 +18,51 @@ public class Calculations {
 
 
     public static void main(String[] args) {
-        Calculations test = new Calculations(7, 4, 0, null);
-        System.out.println("First Question:");
-        test.firstMethod();
+        System.out.println("First Question: ");
+        System.out.println(linear(3, 2, 5));
 
-        Calculations test1 = new Calculations(2, 8, 4, -4.0);
-        System.out.println("Second Question:");
-        test1.secondMethod();
+        System.out.println("Second question: ");
+        System.out.println(quadratic(2, 5, -3, -6));
 
-        Calculations test2 = new Calculations(4, 9, 56, 4.0);
-        System.out.println("Third Question:");
-        test2.thirdMethod();
+        System.out.println("Third Question: ");
+        System.out.println(distance(4, 9, 56, 4));
 
-        Calculations test3 = new Calculations(9, 2, 3, 5.0);
-        System.out.println("Fourth Question:");
-        test3.fourthMethod();
+        System.out.println("Fourth Question: ");
+        System.out.println(direction(9, 2, 3, 5));
+
     }
 
     //ax + b= c
-   public static void firstMethod() {
-        if(a != 0) {
-            double equation = c - (b);
-            finalEquation = (float) (equation / a);
-            System.out.println("x: " + finalEquation);
-        }
-        else if(a == 0){
-            System.out.println("Error");
-        }
+   public static double linear(double a, double b, double c) {
+        return ((c-b)/a);
     }
 
     //ax^2 + bx + c = d
-   public static void secondMethod() {
-        double subtract = c-(d);
-        double divide = 2*a;
-        float squareRootEquation = (float) (Math.pow(b,2) - (4*a*subtract));
-        if (squareRootEquation < 0 || a == 0){
-            System.out.println("No real solutions");
+   public static double[] quadratic(double a, double b, double c, double d) {
+        double [] answer = new double [3];
+        double discrimininate = getDiscriminate(b, a, c);
+        if (discrimininate < 0){
+            answer[0] = 0;
+            return answer;
         }
-        else if (squareRootEquation == 0){
-            finalEquation = (float) ((-(b) + Math.sqrt(squareRootEquation)) / divide);
-            System.out.println("x: " + finalEquation);
+        else if(discrimininate == 0){
+            answer [0] = 1;
+            double solution = (b*(-1)/2*a);
+            answer[1] = solution;
         }
-        else {
-            finalEquationAnswer1 = (float) ((-(b) + Math.sqrt(squareRootEquation)) / divide);
-            finalEquationAnswer2 = (float) ((-(b) - Math.sqrt(squareRootEquation)) / divide);
-            System.out.println("x: " + finalEquationAnswer1 + ",    x: " + finalEquationAnswer2);
+        else{
+            answer[0] = 2;
+            double solution = (b*(-1) + (Math.sqrt((b*b) - (4*a*c))))/2*a;
         }
 
+   }
+
+    private static double getDiscriminate(double b, double a, double c) {
+        return (b+b) - (4*a*c);
     }
 
     //distance between 2 points
-    public static void thirdMethod() {
+    public static double distance(double a, double b, double c, double d) {
         //horizontal distance
         double x = c-a;
         float finalHorizontalDistance = (float) Math.pow(x, 2);
@@ -77,19 +71,19 @@ public class Calculations {
         float finalVerticalDistance = (float) Math.pow(y, 2);
 
         finalEquation = (float) Math.sqrt(finalHorizontalDistance + finalVerticalDistance);
+        return finalEquation;
 
-        System.out.println("Distance between 2 points: " + finalEquation);
    }
 
    //direction between 2 points
-    public static void fourthMethod() {
+    public static double direction(double a, double b, double c, double d) {
         //horizontal distance
         double x = c-a;
         //vertical distance
         double y = d-b;
         float tempAnswer = (float) Math.atan(x/y);
         finalEquation = (float) Math.toDegrees(tempAnswer);
-        System.out.println("Direction between 2 points in degrees: " + finalEquation);
+        return finalEquation;
     }
 
 
