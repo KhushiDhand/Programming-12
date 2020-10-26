@@ -1,34 +1,34 @@
 public class Main {
     public static void main(String[] args) {
-        int[] firstArray = {3, 14, 18, 21, 30};
-        int[] secondArray = {6,35, 44, 67};
-        int[] result = mergeSort(firstArray, secondArray);
+        int[] leftArray = {8, 10, 15, 23, 24, 27};
+        int[] rightArray = {2, 5, 8, 11, 14, 25, 35, 81, 84};
+        int[] result = mergeSort(leftArray, rightArray);
         for(int t = 0 ; t < result.length; t++){
             System.out.println(result[t]);
         }
     }
-    static int[] mergeSort(int[] first, int[] second){
+    static int[] mergeSort(int[] left, int[] right){
         int i = 0;
         int j = 0;
-        int[] mergedArray = new int[first.length + second.length];
+        int[] mergedArray = new int[left.length + right.length];
         int r = 0;
-        while (i < first.length && j < second.length) {
-            if (first[i] < second[j]) {
-                mergedArray[r] = first[i];
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                mergedArray[r] = left[i];
                 i++;
             } else {
-                mergedArray[r] = second[j];
+                mergedArray[r] = right[j];
                 j++;
             }
             r++;
         }
         //For the remaining elements that didnt come in the loop;
-        while (i < first.length) {
-            mergedArray[r++] = first[i++];
+        while (i < left.length) {
+            mergedArray[r++] = left[i++];
         }
 
-        while (j < second.length) {
-            mergedArray[r++] = second[j++];
+        while (j < right.length) {
+            mergedArray[r++] = right[j++];
         }
         return mergedArray;
 
