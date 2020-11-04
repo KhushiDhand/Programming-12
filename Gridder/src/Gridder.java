@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.*;
 import flanagan.io.*;
 import java.awt.Image;
+import java.util.Random;
 
 
 public class Gridder extends javax.swing.JFrame 
@@ -645,34 +646,129 @@ public class Gridder extends javax.swing.JFrame
 
     private void ProblemOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemOneActionPerformed
         // TODO add your handling code here:
+        Random rand = new Random(); //instance of random class
+        int xUpperBound = 100;
+        int yUpperBound = 100;
+        for(int k = 1; k<=100; k++){
+            int int_random = rand.nextInt(xUpperBound);
+            int int_randomY = rand.nextInt(yUpperBound);
+            grid[int_random][int_randomY] = 1;
+            draw();
+        }
+        //generate random values from 0-24
+
+
     }//GEN-LAST:event_ProblemOneActionPerformed
 
     private void ProblemTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemTwoActionPerformed
-        // TODO add your handling code here:
+        Random rand = new Random(); //instance of random class
+        int xUpperBound = 100;
+        int yUpperBound = 100;
+        int randomCol = rand.nextInt(yUpperBound);
+        int randomRow = rand.nextInt(yUpperBound);
+        for(int k = 0; k<100; k++){
+            grid[randomRow][k] = 1;
+            draw();
+        }
+
     }//GEN-LAST:event_ProblemTwoActionPerformed
 
     private void ProblemThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemThreeActionPerformed
-        // TODO add your handling code here:
+        for(int row = 0; row <100; row++){
+            for(int k = 0; k<50; k++){
+                grid[row][k] = 1;
+            }
+        }
+        draw();
     }//GEN-LAST:event_ProblemThreeActionPerformed
 
     private void ProblemFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemFourActionPerformed
-        // TODO add your handling code here:
+        int count = 0;
+        for(int row = 0; row <100; row++){
+            for(int k = 0; k<100; k++){
+                if(grid[row][k] == 1){
+                    count = count + 1;
+                }
+            }
+        }
+        textInfo.setText(Integer.toString(count));
     }//GEN-LAST:event_ProblemFourActionPerformed
 
     private void ProblemFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemFiveActionPerformed
         // TODO add your handling code here:
+        for(int row = 0; row <100; row++){
+            grid[row][row] = 1;
+        }
+        int c = 0;
+        for(int row = 100 - 1; row >=0; row--){
+            grid[row][c] = 1;
+            c=c+1;
+        }
+        draw();
     }//GEN-LAST:event_ProblemFiveActionPerformed
 
     private void ProblemSixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemSixActionPerformed
         // TODO add your handling code here:
+
+        for(int row = 0; row <100; row++){
+            for(int k = 0; k<100; k++){
+                if(grid[row][k] == 1){
+                    grid[row][k] = 0;
+                } else{
+                    grid[row][k] = 1;
+                }
+            }
+        }
+        draw();
     }//GEN-LAST:event_ProblemSixActionPerformed
 
     private void ProblemSevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemSevenActionPerformed
-        // TODO add your handling code here:
+        //create temp
+        int[][] temp = new int[100][100];
+        //copy contents of grid into temp
+        for (int row=0; row<100; row++) {
+            for (int col=0; col<100; col++){
+                temp[col][row] = grid[col][row];
+            }
+        }
+        int counter = 0;
+        for(int row=1; row<99; row++) {
+            counter = 0;
+            for (int col = 1; col < 99; col++) {
+
+                if (grid[col][row - 1] == 1) {//check above temp[col][row]==1;{
+                    counter = counter + 1;
+                }
+                /*if (grid[col][row + 1] == 1) { //check below
+                    counter = counter + 1;
+                }
+                if (grid[col - 1][row] == 1) { //check to the left
+                    counter = counter + 1;
+                }
+                if (grid[col + 1][row] == 1) {//check to the right
+                    counter = counter + 1;
+                }
+                if (counter >= 2) {
+                    temp[col][row] = 1;
+                }
+            }*/
+
+            }
+            grid = temp;
+            draw();
+        }
     }//GEN-LAST:event_ProblemSevenActionPerformed
 
     private void ProblemEightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemEightActionPerformed
-        // TODO add your handling code here:
+        int[][] temp = new int[100][100];
+        //copy contents of grid into temp
+        for (int row=0; row<100; row++) {
+            for (int col=0; col<100; col++){
+                temp[col][row] = grid[col][row];
+            }
+
+
+
     }//GEN-LAST:event_ProblemEightActionPerformed
 
     private void ProblemNineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProblemNineActionPerformed
