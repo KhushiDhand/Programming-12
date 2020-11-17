@@ -53,7 +53,7 @@ public class AddCheckout implements Initializable {
             if(chkBookIdResult==1 && chkStudentIdResult==1){
                 String st = "INSERT INTO CHECKOUT(Id, StudentId, StudentName, StudentEmail, BookId, BookName, BookAuthor) VALUES (" +
                         //USER NEEDS TO CHANGE THE ID EVERYTIME THEY CHECKOUT
-                        "'3',"+
+                        "'4',"+
                         "'" + i + "',"+
                         "'" + n + "',"+
                         "'" + email + "'," +
