@@ -784,7 +784,7 @@ public class Gridder extends javax.swing.JFrame
             // TODO add your handling code here:
         }//GEN-LAST:event_ProblemNineActionPerformed
 
-        public static void main (String [] args){
+        public static void main (String[]args){
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     new Gridder().setVisible(true);
